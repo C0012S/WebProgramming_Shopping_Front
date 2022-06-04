@@ -1,0 +1,31 @@
+.menu_wrapper {
+    width: 60%;
+    margin: 30px auto;
+    // border: 1px solid black;
+
+
+    .tabs {
+        display: flex;
+        list-style:none;
+        padding-left:0px;
+
+        > li {
+            width: 100%;
+            text-align: center;
+            border: 1px solid black;
+            padding: 20px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: lightpink;
+            }
+        }
+    }
+
+    .contents {
+        text-align: center;
+        padding: 100px;
+        border: 1px solid black;
+//        border-top: none;
+    }
+}

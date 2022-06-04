@@ -6,6 +6,7 @@ import SearchShopping from "./SearchShopping.js";
 import UpdateShopping from "./UpdateShopping.js";
 import DeleteShopping from "./DeleteShopping.js";
 import { call } from "./service/ApiService";
+import './MenuTab.scss'; // npm install sass 설치 필요
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,12 @@ class App extends React.Component {
       ],
 */      
       items: [ ],
+      activeTab: 0,
     };
+  }
+
+  menuHandler = (id) => {
+    this.setState({ activeTab: id })
   }
 
   componentDidMount() {
@@ -110,12 +116,33 @@ class App extends React.Component {
       <ShoppingRow item={ item } key={ item.id } />
     ));
 
+    const obj = {
+      0: <AddShopping add={ this.add } />,
+      1: <SearchShopping />,
+      2: <UpdateShopping update={ this.update } />,
+      3: <DeleteShopping delete={ this.delete } />
+    }
+
     return (
       <div className="App">
+        <div className="menu_wrapper">
+          <ul className="tabs">
+            <li onClick={ () => this.menuHandler(0) } >추가</li>
+            <li onClick={ () => this.menuHandler(1) } >검색</li>
+            <li onClick={ () => this.menuHandler(2) } >수정</li>
+            <li onClick={ () => this.menuHandler(3) } >삭제</li>
+          </ul>
+          <div className="contents">
+            { obj[ this.state.activeTab ] }
+          </div>
+        </div>
+
+{/*
         <AddShopping add={ this.add } />
         <SearchShopping />
         <UpdateShopping update={ this.update } />
         <DeleteShopping delete={ this.delete } />
+*/}        
 
         <table style={{ margin: 16 }}>
           <caption>Shopping Item Table</caption>
