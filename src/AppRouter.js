@@ -9,8 +9,8 @@ import Typography from "@material-ui/core/Typography";
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            { "Copyright 0 " }
-            Sang Hee Park, { new Date().getFullYear }
+            { "Copyright @ " }
+            PSH, { new Date().getFullYear() }
             { "." }
         </Typography>
     );
