@@ -127,10 +127,10 @@ class App extends React.Component {
       <div className="App">
         <div className="menu_wrapper">
           <ul className="tabs">
-            <li onClick={ () => this.menuHandler(0) } >추가</li>
-            <li onClick={ () => this.menuHandler(1) } >검색</li>
-            <li onClick={ () => this.menuHandler(2) } >수정</li>
-            <li onClick={ () => this.menuHandler(3) } >삭제</li>
+            <li onClick={ () => this.menuHandler(0) } style={ this.state.activeTab === 0 ? { backgroundColor: 'lightpink' } : { backgroundColor: 'white' } } >추가</li>
+            <li onClick={ () => this.menuHandler(1) } style={ this.state.activeTab === 1 ? { backgroundColor: 'lightpink' } : { backgroundColor: 'white' } } >검색</li>
+            <li onClick={ () => this.menuHandler(2) } style={ this.state.activeTab === 2 ? { backgroundColor: 'lightpink' } : { backgroundColor: 'white' } } >수정</li>
+            <li onClick={ () => this.menuHandler(3) } style={ this.state.activeTab === 3 ? { backgroundColor: 'lightpink' } : { backgroundColor: 'white' } } >삭제</li>
           </ul>
           <div className="contents">
             { obj[ this.state.activeTab ] }
