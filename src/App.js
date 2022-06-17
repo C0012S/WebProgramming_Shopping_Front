@@ -5,8 +5,9 @@ import AddShopping from "./AddShopping.js";
 import SearchShopping from "./SearchShopping.js";
 import UpdateShopping from "./UpdateShopping.js";
 import DeleteShopping from "./DeleteShopping.js";
-import { call } from "./service/ApiService";
+import { call, signout } from "./service/ApiService";
 import './MenuTab.scss'; // npm install sass 설치 필요
+import { Grid, Button, AppBar, Toolbar, Typography } from "@material-ui/core";
 
 class App extends React.Component {
   constructor(props) {
@@ -123,8 +124,27 @@ class App extends React.Component {
       3: <DeleteShopping delete={ this.delete } />
     }
 
+    // navigationBar 추가
+    var navigationBar = (
+      <AppBar position="static">
+        <Toolbar>
+          <Grid justifyContent="space-between" container>
+            <Grid item>
+              <Typography variant="h6">Shopping Mall</Typography>
+            </Grid>
+            <Grid>
+              <Button color="inherit" onClick={ signout }>
+                로그아웃
+              </Button>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    );
+
     return (
       <div className="App">
+        { navigationBar } {/* 네비게이션 바 렌더링 */}
         <div className="menu_wrapper">
           <ul className="tabs">
             <li onClick={ () => this.menuHandler(0) } style={ this.state.activeTab === 0 ? { backgroundColor: 'lightpink' } : { backgroundColor: 'white' } } >추가</li>
