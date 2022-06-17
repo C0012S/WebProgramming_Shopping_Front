@@ -32,4 +32,12 @@ export function call(api, method, request) {
         });
 }
 
-export default call;
+export function signin(userDTO) {
+    return call("/auth/signin", "POST", userDTO)
+        .then((response) => {
+            console.log("response : ", response);
+            alert("로그인 토큰 : " + response.token);
+        });
+}
+
+//export default call;
