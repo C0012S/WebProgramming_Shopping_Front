@@ -21,6 +21,7 @@ class App extends React.Component {
 */      
       items: [ ],
       activeTab: 0,
+      loading: true, // 로딩 중이라는 상태를 표현할 변수
     };
   }
 
@@ -44,7 +45,7 @@ class App extends React.Component {
 */        
 
     call("/shopping", "GET", null).then((response) =>
-      this.setState({ items: response.data })
+      this.setState({ items: response.data, loading: false })
     );
   }
 
@@ -142,8 +143,8 @@ class App extends React.Component {
       </AppBar>
     );
 
-    return (
-      <div className="App">
+    var shoppingListPage = (
+      <div>
         { navigationBar } {/* 네비게이션 바 렌더링 */}
         <div className="menu_wrapper">
           <ul className="tabs">
@@ -180,6 +181,18 @@ class App extends React.Component {
           </tbody>
         </table>
       </div>
+    );
+
+    var loadingPage = <h1> 로딩 중... </h1>;
+
+    var content = loadingPage;
+
+    if (!this.state.loading) {
+      content = shoppingListPage;
+    }
+
+    return (
+      <div className="App">{ content }</div>
     );
   }
 }
