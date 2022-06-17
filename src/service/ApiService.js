@@ -58,4 +58,8 @@ export function signout() {
     window.location.href = "/login";
 }
 
+export function signup(userDTO) {
+    return call("/auth/signup", "POST", userDTO);
+}
+
 //export default call;
